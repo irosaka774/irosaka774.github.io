@@ -2,44 +2,32 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>ゲーム風ロールプレイサイト</title>
+  <title>ロールプレイ部屋ポータル</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- ヘッダー -->
-  <header id="site-header">
-    <div class="container">
-      <h1>ファンタジーChatルーム</h1>
-      <nav id="global-nav">
-        <a href="index.html">トップ</a>
-      </nav>
-    </div>
-  </header>
-
-  <!-- メインコンテンツ -->
-  <main id="site-main" class="container">
-    <!-- このページの説明 -->
-    <section id="intro">
-      <h2>このサイトについて</h2>
-      <p>ここはゲーム風の会話（ロールプレイ）が楽しめるチャットルームを集めたポータルサイトです。</p>
+  <header><h1>ロールプレイ部屋ポータル</h1></header>
+  <main class="container">
+    <!-- 新規部屋作成 -->
+    <section id="new-room">
+      <h2>新しい部屋を作成</h2>
+      <input id="room-title" placeholder="部屋のタイトル">
+      <button id="create-room">作成</button>
     </section>
 
-    <!-- ロールプレイ部屋へのリンク -->
-    <section id="rooms">
-      <h2>ロールプレイ部屋一覧</h2>
-      <ul>
-        <li><a href="room1.html">部屋1：三日月の王国</a></li>
-        <li><a href="room2.html">部屋2：星狩りの国</a></li>
-      </ul>
-      </section>
+    <!-- アクティブ部屋一覧 -->
+    <section id="active-rooms">
+      <h2>参加中の部屋</h2>
+      <ul id="active-list"></ul>
+    </section>
+
+    <!-- アーカイブ一覧 -->
+    <section id="archived-rooms">
+      <h2>過去ログ置き場</h2>
+      <ul id="archive-list"></ul>
+    </section>
   </main>
 
-  <!-- フッター -->
-  <footer id="site-footer">
-    <div class="container">
-      <p><a href="index.html">トップページに戻る</a></p>
-      <p>&copy; 2025 あなたのサイト名</p>
-    </div>
-  </footer>
+  <script type="module" src="script.js"></script>
 </body>
 </html>
