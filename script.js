@@ -1,0 +1,64 @@
+let story = [];
+const speakerEl = document.getElementById('speaker');
+const avatarEl  = document.getElementById('avatar');
+const posEl     = document.getElementById('position');
+const textEl    = document.getElementById('text');
+const preview   = document.getElementById('preview');
+const addBtn    = document.getElementById('addBtn');
+const toggleBtn = document.getElementById('toggleView');
+const exportBtn = document.getElementById('exportJson');
+let viewMode = 'editor';
+
+function render() {
+  preview.innerHTML = '';
+  story.forEach(item => {
+    const bubble = document.createElement('div');
+    bubble.className = 'chat-bubble ' + (item.position === 'left' ? 'left' : '');
+    const img = document.createElement('img');
+    img.src = item.avatar;
+    img.alt = item.speaker;
+    const txt = document.createElement('div');
+    txt.className = 'chat-text';
+    txt.innerText = item.text;
+    bubble.appendChild(img);
+    bubble.appendChild(txt);
+    preview.appendChild(bubble);
+  });
+}
+
+addBtn.addEventListener('click', () => {
+  const entry = {
+    speaker: speakerEl.value,
+    avatar:  avatarEl.value,
+    position: posEl.value,
+    text:     textEl.value
+  };
+  story.push(entry);
+  render();
+  speakerEl.value = avatarEl.value = textEl.value = '';
+});
+
+toggleBtn.addEventListener('click', () => {
+  const editor = document.getElementById('editor-column');
+  if (viewMode === 'editor') {
+    editor.style.display = 'none';
+    toggleBtn.textContent = '編集モードに戻す';
+    viewMode = 'chat';
+  } else {
+    editor.style.display = 'block';
+    toggleBtn.textContent = '表示モード切替';
+    viewMode = 'editor';
+  }
+});
+
+exportBtn.addEventListener('click', () => {
+  const blob = new Blob([JSON.stringify(story, null, 2)], { type: 'application/json' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href     = url;
+  a.download = 'story.json';
+  a.click();
+  URL.revokeObjectURL(url);
+});
+
+render();
