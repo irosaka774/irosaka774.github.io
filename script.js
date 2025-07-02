@@ -1,3 +1,19 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+import {
+  getFirestore, collection, addDoc, doc,
+  onSnapshot, query, orderBy, getDoc, deleteDoc, setDoc
+} from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "...",
+  authDomain: "...",
+  projectId: "...",
+  // ...
+};
+const app = initializeApp(firebaseConfig);
+const db  = getFirestore(app);
+
+
 let story = [];
 const speakerEl = document.getElementById('speaker');
 const avatarEl  = document.getElementById('avatar');
