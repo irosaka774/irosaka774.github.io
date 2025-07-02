@@ -13,6 +13,46 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db  = getFirestore(app);
 
+// 省略：Firebase初期化コード
+
+const activeCol  = collection(db, "rooms", "active", "list");
+const archiveCol = collection(db, "rooms", "archive", "list");
+
+// 新規部屋作成
+document.getElementById("create-room").onclick = async () => {
+  const title = document.getElementById("room-title").value.trim();
+  if (!title) return alert("タイトルを入力してください");
+  const docRef = await addDoc(activeCol, {
+    title,
+    createdAt: new Date()
+  });
+  window.location.href = `room.html?id=${docRef.id}`;
+};
+
+// リアルタイムにアクティブ一覧を監視
+onSnapshot(query(activeCol, orderBy("createdAt", "desc")), snap => {
+  const ul = document.getElementById("active-list");
+  ul.innerHTML = "";
+  snap.forEach(doc => {
+    const li = document.createElement("li");
+    li.innerHTML = `<a href="room.html?id=${doc.id}">${doc.data().title}</a>`;
+    ul.appendChild(li);
+  });
+});
+
+// アーカイブ一覧を監視
+onSnapshot(query(archiveCol, orderBy("closedAt", "desc")), snap => {
+  const ul = document.getElementById("archive-list");
+  ul.innerHTML = "";
+  snap.forEach(doc => {
+    const d = doc.data();
+    const li = document.createElement("li");
+    li.innerHTML = `<a href="room.html?id=${doc.id}&archived=1">${d.title} (終了: ${d.closedAt.toDate().toLocaleString()})</a>`;
+    ul.appendChild(li);
+  });
+});
+
+
 
 let story = [];
 const speakerEl = document.getElementById('speaker');
