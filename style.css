@@ -1,0 +1,68 @@
+/* 共通コンテナ */
+.container {
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ページ全体 */
+body {
+  font-family: "Noto Sans JP", sans-serif;
+  line-height: 1.6;
+  background: #f7f8fa;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* ヘッダー */
+#site-header {
+  background: #4a4e69;
+  color: #fff;
+  padding: 1rem 0;
+}
+#site-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+#global-nav a {
+  color: #f2e9e4;
+  text-decoration: none;
+  margin-left: 1rem;
+}
+
+/* メイン：イントロ & ルーム一覧 */
+#intro {
+  margin: 2rem 0 1rem;
+}
+#rooms ul {
+  list-style: none;
+  padding: 0;
+}
+#rooms li {
+  margin: 0.5rem 0;
+}
+#rooms a {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: #9a8c98;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+}
+#rooms a:hover {
+  background: #c9ada7;
+}
+
+/* フッター */
+#site-footer {
+  background: #22223b;
+  color: #fafafa;
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: 2rem;
+}
+#site-footer a {
+  color: #9a8c98;
+  text-decoration: none;
+}
