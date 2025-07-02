@@ -2,51 +2,28 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>部屋1：三日月の王国</title>
+  <title>部屋</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- ヘッダー -->
-  <header id="site-header">
-    <div class="container">
-      <h1>三日月の王国チャット</h1>
-      <nav id="global-nav">
-        <a href="index.html">トップに戻る</a>
-      </nav>
-    </div>
-  </header>
+  <header><a href="index.html">トップに戻る</a></header>
+  <main class="container">
+    <h1 id="room-title"></h1>
+    <div id="chat"></div>
 
-  <!-- メイン：エディタ＋プレビュー -->
-  <main id="site-main" class="container">
-    <!-- 左カラム：会話エディタ -->
-    <section id="editor-column">
-      <h2>会話エディタ</h2>
-      <input id="speaker"   placeholder="キャラクター名">
-      <input id="avatar"    placeholder="立ち絵のURL">
+    <!-- 編集モード中のみ表示 -->
+    <section id="editor">
+      <input id="speaker" placeholder="キャラ名">
+      <input id="avatar"  placeholder="立ち絵URL">
       <select id="position">
         <option value="right">右</option>
         <option value="left">左</option>
       </select>
-      <textarea id="text"   placeholder="セリフを入力"></textarea>
-      <button id="addBtn">追加</button>
-      <button id="toggleView">表示モード切替</button>
-      <button id="exportJson">JSONダウンロード</button>
-    </section>
-
-    <!-- 右カラム：会話プレビュー -->
-    <section id="viewer-column">
-      <h2>チャットプレビュー</h2>
-      <div id="preview"></div>
+      <textarea id="text" placeholder="セリフ"></textarea>
+      <button id="add">追加</button>
+      <button id="close-room">部屋を終了/アーカイブ</button>
     </section>
   </main>
-
-  <!-- フッター -->
-  <footer id="site-footer">
-    <div class="container">
-      &copy; 2025 あなたのサイト名
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>
